@@ -12,6 +12,7 @@ public class UsersController : ControllerBase
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ResponseErrorMessagesJson), StatusCodes.Status400BadRequest)]
     public IActionResult Create(RequestUserJson request)
     {
         try
@@ -24,9 +25,18 @@ public class UsersController : ControllerBase
         }
         catch (TechLibraryException ex)
         {
-            return BadRequest(ex.GetErrorMessages());
+            return BadRequest(new ResponseErrorMessagesJson
+            {
+                ErrorMessages = ex.GetErrorMessages()
+            });
         }
-
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, new ResponseErrorMessagesJson
+            {
+                ErrorMessages = ["Erro Desconhecido."]
+            });
+        }
     }
 }
 
