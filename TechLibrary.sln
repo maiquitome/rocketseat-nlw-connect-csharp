@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechLibrary.Api", "TechLibr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechLibrary.Communication", "TechLibrary.Communication\TechLibrary.Communication.csproj", "{33B50406-3505-4124-88DA-A72834703D73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechLibrary.Exception", "TechLibrary.Exception\TechLibrary.Exception.csproj", "{A15A57CE-D316-49CC-B953-975A74787CA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{33B50406-3505-4124-88DA-A72834703D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33B50406-3505-4124-88DA-A72834703D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33B50406-3505-4124-88DA-A72834703D73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A15A57CE-D316-49CC-B953-975A74787CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A15A57CE-D316-49CC-B953-975A74787CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A15A57CE-D316-49CC-B953-975A74787CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A15A57CE-D316-49CC-B953-975A74787CA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
