@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers/" />
+    <ProjectReference Include="../TechLibrary.Communication/TechLibrary.Communication.csproj" />
   </ItemGroup>
 
 </Project>
