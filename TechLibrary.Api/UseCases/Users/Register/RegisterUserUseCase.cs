@@ -1,5 +1,5 @@
 using TechLibrary.Api.Domain.Entities;
-using TechLibrary.Api.infrastructure.DataAccess;
+using TechLibrary.Api.Infrastructure.DataAccess;
 using TechLibrary.Communication.Requests;
 using TechLibrary.Communication.Responses;
 using TechLibrary.Exception;
