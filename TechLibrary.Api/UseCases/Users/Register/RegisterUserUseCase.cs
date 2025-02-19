@@ -1,5 +1,7 @@
+using FluentValidation.Results;
 using TechLibrary.Api.Domain.Entities;
 using TechLibrary.Api.Infrastructure.DataAccess;
+using TechLibrary.Api.Infrastructure.Security.Cryptography;
 using TechLibrary.Communication.Requests;
 using TechLibrary.Communication.Responses;
 using TechLibrary.Exception;
@@ -10,16 +12,18 @@ public class RegisterUserUseCase
 {
     public ResponseRegisteredUserJson Execute(RequestUserJson request)
     {
-        Validate(request);
+        var dbContext = new TechLibraryDbContext();
+
+        Validate(request, dbContext);
+
+        var cryptography = new BCryptAlgorithm();
 
         var entity = new User
         {
             Name = request.Name,
             Email = request.Email,
-            Password = request.Password
+            Password = cryptography.HashPassword(request.Password)
         };
-
-        var dbContext = new TechLibraryDbContext();
 
         dbContext.Users.Add(entity);
         dbContext.SaveChanges();
@@ -30,11 +34,18 @@ public class RegisterUserUseCase
         };
     }
 
-    private static void Validate(RequestUserJson request)
+    private static void Validate(RequestUserJson request, TechLibraryDbContext dbContext)
     {
         var validator = new RegisterUserValidator();
 
-        FluentValidation.Results.ValidationResult result = validator.Validate(request);
+        ValidationResult result = validator.Validate(request);
+
+        bool isThereUserWithThisEmail = dbContext.Users.Any(user => user.Email == request.Email);
+
+        if (isThereUserWithThisEmail)
+        {
+            result.Errors.Add(new ValidationFailure("Email", "Email já cadastrado."));
+        }
 
         bool isInvalid = result.IsValid == false;
 
