@@ -3,5 +3,6 @@
         "**/bin": true,
         "**/obj": true
     },
-    "dotnet.defaultSolution": "TechLibrary.sln"
+    "dotnet.defaultSolution": "TechLibrary.sln",
+    "cSpell.words": ["techlibrary"]
 }

@@ -19,8 +19,4 @@
     <ProjectReference Include="../TechLibrary.Exception/TechLibrary.Exception.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="infrastructure/" />
-  </ItemGroup>
-
 </Project>
