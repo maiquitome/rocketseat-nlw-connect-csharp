@@ -1,3 +1,5 @@
+using TechLibrary.Api.Filters;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Adicionar suporte a controllers
@@ -9,6 +11,8 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
 var app = builder.Build();
 
